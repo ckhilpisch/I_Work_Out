@@ -41,4 +41,19 @@ const workoutSchema = new Schema({
 
 const workout = mongoose.model("workout", workoutSchema);
 
+db.workout.aggregate ( [
+  {
+    $addFields: {
+      totalWeight: { $muliply: ["$weight", "$rep", "$set"] }
+    }
+  },
+  {
+    $addFields: {
+      totalDistance:
+      { $sum: ["$distance"]}
+    }
+  }
+  
+])
+
 module.exports = workout;
