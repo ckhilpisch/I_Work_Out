@@ -8,7 +8,8 @@ const workoutSchema = new Schema({
     default: Date.now
   },
   exercise: [{
-    type: {String,
+    type: {
+    type: String,
     trim: true,
     required: "Enter the type of exercise"
   },
@@ -46,8 +47,6 @@ const workoutSchema = new Schema({
 }],
 });
 
-const workout = mongoose.model("workout", workoutSchema);
-
 db.workout.aggregate ([
   {
     $addFields: { 
@@ -56,10 +55,11 @@ db.workout.aggregate ([
   {
     $addFields: {
       totalDuration:
-      { $sum: ["$time"]}
+      { $sum: ["$duration"]}
     }
   }
   
 ])
+const Workout = mongoose.model("Workout", workoutSchema);
 
-module.exports = workout;
+module.exports = Workout;
