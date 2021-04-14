@@ -16,10 +16,10 @@ router.post("/workouts", ({ body }, res) => {
 
 //get last workout
 router.get("/workouts", (req, res) => {
-  Workout.find([
+  Workout.aggregate([
     {
       $addFields: {
-        totalDuration: { $sum: "exercise.duration"}
+        totalDuration: { $sum: "exercises.duration"}
       }
     }
   ])
