@@ -1,3 +1,4 @@
-module.exports={
-    Workout: require("./workout")
-}
+
+ let db = {   Workout: require("./workout") }
+
+ module.exports = db;

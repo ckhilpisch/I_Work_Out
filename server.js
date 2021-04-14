@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const logger = require("morgan");
+const mongojs = require("mongojs");
 
 const PORT = process.env.PORT || 3000;
 
@@ -15,8 +16,8 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // route connections
-app.use(require("./routes/apiRoutes"));
-app.use(require("./routes/homeRoutes"));
+app.use(require("./routes/apiRoutes.js"));
+app.use(require("./routes/homeRoutes.js"));
 
 //database connection
 mongoose.connect(
@@ -29,12 +30,12 @@ mongoose.connect(
   }
 );
 
-//double check the mongoDB connection
-const db = mongoose.connection;
+// //double check the mongoDB connection
+// const db = mongoose.connection;
 
-db.on("error", (error) => {
-  console.log("Database Error:", error);
-});
+// db.on("error", (error) => {
+//   console.log("Database Error:", error);
+// });
 
 //server
 app.listen(PORT, () => {
