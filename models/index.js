@@ -1,4 +1,3 @@
+let db = { Workout: require("./workout") };
 
- let db = {   Workout: require("./workout") }
-
- module.exports = db;
+module.exports = db;
