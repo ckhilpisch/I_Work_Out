@@ -34,7 +34,7 @@ router.get("/workouts/range", (req, res) => {
   Workout.aggregate([
     {
       $addFields: {
-        totalDuration: { $sum: "$exercise.duration" }
+        totalDuration: { $sum: "$exercises.duration" }
       }
 
     },
@@ -51,7 +51,7 @@ router.get("/workouts/range", (req, res) => {
 //add to an existing workout
 router.put("/workouts/:id", ({ body, params }, res) => {
   Workout.findOneAndUpdate(params.id, 
-    { $push: { exercise: body } }, 
+    { $push: { exercises: body } }, 
     { new: true })
     .then((workout) => {
       res.json(workout);
