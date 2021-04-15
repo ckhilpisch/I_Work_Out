@@ -14,7 +14,7 @@
 
 ## <div align ='center'> <a name="description"> **Description** :</a></div> 
 
-Built upon existing code to create an app where a user is be able to view, create, and track daily workouts. The user can log multiple exercises in a workout on a given dayand can track the name, type, weight, sets, reps, and duration of exercise. If the exercise is a cardio exercise, I should be able to track my distance traveled.
+Built upon existing code to create an app where a user is be able to view, create, and track daily workouts. The user can log multiple exercises in a workout on a given dayand can track the name, type, weight, sets, reps, and duration of exercise. If the exercise is a cardio exercise, the user can my distance traveled.
 A user will reach their fitness goals quicker when able to track workout progress.
 
 ## <div align ='center'> <a name="technologies"> **Technologies** :</a></div> 
@@ -32,11 +32,13 @@ A user will reach their fitness goals quicker when able to track workout progres
 
 ## <div align="center"><a name="usage"> **Usage** :</a></div>
 
-When the user loads the page, they should be given the option to create a new workout or continue with their last workout.
+When the user loads the page, the user is given the option to create a new workout or continue with the last workout.
 
-The user should be able to:
+The user can:
 
   * Add exercises to the most recent workout plan.
+  
+  * View the total duration of the last workout.
 
   * Add new exercises to a new workout plan.
 
@@ -47,15 +49,21 @@ The user should be able to:
 <br>
 <br>
 
+## <div align="center"> **The Deployed site :**</div>
+
+### https://i-work-out.herokuapp.com/
+
 ## <div align="center"><a name="visuals"> **Visuals** :</a></div>
 
 This is the completed site:
-![Card site](Develop/assets/Site.png)
+![Home page](assets/home.png)
+![Stats page](assets/stats.png)
+
 
 Here is the site in action:
 
-![Card GIF](Develop/assets/TeamBuilder.gif)
-![Card GIF](Develop/assets/TeamMobile.gif)
+![Workout GIF](assets/workout.gif)
+
 
 
 ## <div align="center"><a name="testing"> **Testing** :</a></div>
