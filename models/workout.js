@@ -41,7 +41,7 @@ const workoutSchema = new Schema({
         required: "Enter the number of reps",
       },
 
-      set: {
+      sets: {
         type: Number,
         required: "Enter the number of sets",
       },

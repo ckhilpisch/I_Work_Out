@@ -1,24 +1,42 @@
 const router = require("express").Router();
-const Workout = require("../models/workout");
-const db = require("../models/index");
+const db = require("../models");
 
 //create new workout
-router.post("/workouts", ({ body }, res) => {
-  console.log(body);
-  Workout.create(body)
+router.post("/workouts", (req, res) => {
+  db.Workout.create({})
   
-    .then((Workout) => {
-      res.json(Workout);
+    .then((workout) => {
+      res.json(workout);
     })
     .catch((err) => {
       res.status(400).json(err);
     });
 });
 
+//add to an existing workout
+router.put("/workouts/:id", (req, res) => {
+  console.log(req);
+  db.Workout.findByIdAndUpdate(
+    req.params.id,
+    {
+      $push: {
+        exercises: req.body,
+      },
+    },
+    { new: true }
+  )
+    .then((workout) => {
+      res.json(workout);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
 //get last workout
 router.get("/workouts", (req, res) => {
   console.log(res.body);
-  Workout.aggregate([
+  db.Workout.aggregate([
     {
       $addFields: {
         totalDuration: { $sum: "$exercises.duration" },
@@ -38,35 +56,15 @@ router.get("/workouts", (req, res) => {
 
 //get last 7 workouts
 router.get("/workouts/range", (req, res) => {
-  Workout.aggregate([
+  db.Workout.aggregate([
     {
       $addFields: {
         totalDuration: { $sum: "$exercises.duration" },
       },
     },
   ])
-    .sort({ _id: -1 })
+    .sort({ date: -1 })
     .limit(7)
-    .then((workout) => {
-      res.json(workout);
-    })
-    .catch((err) => {
-      res.json(err);
-    });
-});
-
-//add to an existing workout
-router.put("/workouts/:id", (req, res) => {
-  console.log(req);
-  Workout.findOneAndUpdate(
-    req.params.id,
-    {
-      $push: {
-        exercises: req.body,
-      },
-    },
-    { new: true }
-  )
     .then((workout) => {
       res.json(workout);
     })
