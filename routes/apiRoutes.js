@@ -4,7 +4,7 @@ const db = require("../models");
 //create new workout
 router.post("/workouts", (req, res) => {
   db.Workout.create({})
-  
+
     .then((workout) => {
       res.json(workout);
     })
